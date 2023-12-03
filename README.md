@@ -1,17 +1,19 @@
-# cfl_lbm
 
-Applying Causal Feature Learning (CFL) to lesion-behavior mapping (LBM)
+<h1 align="center">Lesion-Behavior Mapping using Causal Feature Learning</h1>
+<p align="center">
+<img src=readme_graphic.png width="800" />
+</p>
 
 ### Overview
 
 Causal Feature Learning (CFL) is an unsupervised algorithm designed to construct
 macro-variables from low-level data, preserving the causal relationships present
 in the data. In this repository, CFL is applied to human brain lesion data and
-responses to language, visuospatial, and depression assessments in order to
-identify 1) categories of lesions that are unique in their effects on test
-responses and 2) categories of test responses that are unique in their
+corresponding responses to language, visuospatial, and depression assessments in
+order to identify 1) categories of lesions that are unique in their effects on
+test responses and 2) categories of test responses that are unique in their
 likelihoods of occurring given any lesion. This code depends on the [CFL
-software package](https://github.com/eberharf/cfl) which can be installed via 
+software package](https://github.com/eberharf/cfl) which can be installed via
 [pip](https://cfl.readthedocs.io/en/latest/getting_started/SETUP.html).
 
 
@@ -26,8 +28,9 @@ contains the following files:
     - `dems.npy` : optional, an n_samples x n_demographics array of demographic
       measures to include when running CFL. 
 
-2. Parameters to run CFL with can be modified in cfl_params.py. Consult the 
-   CFL software package [documentation](https://cfl.readthedocs.io/en/latest/index.html#) for details on setting parameters. 
+2. Parameters to run CFL with can be modified in `cfl_params.py`. Consult the 
+   CFL software package [documentation](https://cfl.readthedocs.io/en/latest/index.html#) for details on setting parameters. Examples of how to set parameters
+   for hyperparameter tuning are included in this file as well.
 
 3. Modify `util.load_scale_data` to properly preprocess your specific dataset.
 
@@ -42,9 +45,15 @@ Set these with flags as needed when running scripts from the command line.
 
 ### Included analyses
 
-- `source/run_cfl.py`
-- `source/extended_analyses/cluster_questions.py`
-- `source/extended_analyses/compare_aggregates.py`
-- `source/extended_analyses/compare_cca.py`
-- `source/extended_analyses/compare_mbdi.py`
-- `source/extended_analyses/compare_naive.py`
+- `source/run_cfl.py`: fits a CFL model provided cause and effect variable data
+- `source/extended_analyses/cluster_questions.py`: clusters question-wise
+  responses based on their contributions to defining the effect partition found
+  by CFL 
+- `source/extended_analyses/compare_aggregates.py`: evaluates candidate
+  aggregate BDI quantities based on ability to predict categories found by CFL
+- `source/extended_analyses/compare_cca.py`: compares CFL results to CCA results
+- `source/extended_analyses/compare_mbdi.py` compares CFL results found when the
+  effect is given as responses to the 21 BDI questions versus the mean score
+  across questions
+- `source/extended_analyses/compare_naive.py`: compares CFL results to those
+  found when lesion masks are clustered without regard to the effect
