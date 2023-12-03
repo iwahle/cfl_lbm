@@ -54,7 +54,7 @@ if __name__=='__main__':
         python cluster_questions.py --exp_id 0 --n_clusters 3
     '''
     parser = argparse.ArgumentParser()
-    parser.add_argument('--exp_id', type=int)
+    parser.add_argument('--exp_id', type=str)
     parser.add_argument('--n_clusters', type=int)
 
     main(**vars(parser.parse_args()))

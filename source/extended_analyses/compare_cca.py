@@ -72,10 +72,10 @@ def evaluate_cfl(X, Y, in_idx, out_idx, data_info):
 
     cfl_exp = Experiment(X_train=X[in_idx,:], Y_train=Y[in_idx,:], 
                         data_info=data_info, block_names=block_names, 
-                        block_params=bdi_params_fixed, blocks=None, verbose=0, 
+                        block_params=bdi_params, blocks=None, verbose=0, 
                         results_path=None)
     train_results = cfl_exp.train()
-    n_clusters = bdi_params_fixed[1]['model_params']['n_clusters']
+    n_clusters = bdi_params[1]['model_params']['n_clusters']
     cfl_lbls_in_idx = train_results['CauseClusterer']['x_lbls']
     cfl_lbls_in_idx = one_hot_encode(cfl_lbls_in_idx, range(n_clusters))
 

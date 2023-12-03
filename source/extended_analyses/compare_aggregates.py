@@ -186,7 +186,7 @@ def main(exp_id):
 
     # load effect macrostates
     with open(os.path.join(RESULTS_PATH, analysis, f'experiment{exp_id.zfill(4)}', 
-        'dataset_train/Effectclusterer_results.pickle'), 'rb') as f:
+        'dataset_train/EffectClusterer_results.pickle'), 'rb') as f:
         labels = pickle.load(f)['y_lbls']
         
     Y_mbdi = compute_mbdi_aggs(Y)

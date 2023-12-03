@@ -1,7 +1,7 @@
 
 <h1 align="center">Lesion-Behavior Mapping using Causal Feature Learning</h1>
 <p align="center">
-<img src=readme_graphic.png width="800" />
+<img src=readme_graphic.png width="600" />
 </p>
 
 ### Overview
