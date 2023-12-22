@@ -1,5 +1,8 @@
 import numpy as np
 
+# choice of random_state parameters in the following may slightly vary 
+# macrostate assignments
+
 # cowa_jlo analysis params
 cj_CDE_params = {  'model' : 'CondExpRidgeCV',
                 'model_params' : {  'cv_split' : None,

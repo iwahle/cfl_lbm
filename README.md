@@ -16,8 +16,6 @@ likelihoods of occurring given any lesion. This code depends on the [CFL
 software package](https://github.com/eberharf/cfl) which can be installed via
 [pip](https://cfl.readthedocs.io/en/latest/getting_started/SETUP.html).
 
-
-
 ### Running the code
 
 1. To use this code with your own data, add a new directory within `data` that 
@@ -28,9 +26,11 @@ contains the following files:
     - `dems.npy` : optional, an n_samples x n_demographics array of demographic
       measures to include when running CFL. 
 
-2. Parameters to run CFL with can be modified in `cfl_params.py`. Consult the 
-   CFL software package [documentation](https://cfl.readthedocs.io/en/latest/index.html#) for details on setting parameters. Examples of how to set parameters
-   for hyperparameter tuning are included in this file as well.
+2. Parameters to run CFL with can be modified in `cfl_params.py`. Consult the
+   CFL software package
+   [documentation](https://cfl.readthedocs.io/en/latest/index.html#) for details
+   on setting parameters. Examples of how to set parameters for hyperparameter
+   tuning are included in this file as well.
 
 3. Modify `util.load_scale_data` to properly preprocess your specific dataset.
 
@@ -57,3 +57,28 @@ Set these with flags as needed when running scripts from the command line.
   across questions
 - `source/extended_analyses/compare_naive.py`: compares CFL results to those
   found when lesion masks are clustered without regard to the effect
+
+
+### License and Citations
+
+cfl_lbm is released under a BSD-like license for non-commercial use only. If you
+use cfl_lbm in published research work, we encourage you to cite this
+repository:
+
+```
+Lesion-Behavior Mapping using Causal Feature Learning (2023). https://github.com/iwahle/cfl_lbm
+```
+
+or use the BibTex reference:
+
+```
+@misc{cfl_lbm2023,
+    title     = "Lesion-Behavior Mapping using Causal Feature Learning",
+    year      = "2023",
+    publisher = "GitHub",
+    url       = "https://github.com/iwahle/cfl_lbm"}
+```
+
+### Contact
+
+Please reach out to Iman Wahle (imanwahle@gmail.com) with any questions.
