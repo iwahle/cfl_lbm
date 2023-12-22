@@ -41,7 +41,7 @@ contains the following files:
     - `include_dem`: if 1, will include the demographic quantities specified
         in `dems.npy`; if 0, will not.
 
-Set these with flags as needed when running scripts from the command line.
+  Set these with flags as needed when running scripts from the command line.
 
 ### Included analyses
 
@@ -61,8 +61,7 @@ Set these with flags as needed when running scripts from the command line.
 
 ### License and Citations
 
-cfl_lbm is released under a BSD-like license for non-commercial use only. If you
-use cfl_lbm in published research work, we encourage you to cite this
+If you use cfl_lbm in published research work, we encourage you to cite this
 repository:
 
 ```
