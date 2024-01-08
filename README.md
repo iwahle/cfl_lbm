@@ -9,16 +9,39 @@
 Causal Feature Learning (CFL) is an unsupervised algorithm designed to construct
 macro-variables from low-level data, preserving the causal relationships present
 in the data. In this repository, CFL is applied to human brain lesion data and
-corresponding responses to language, visuospatial, and depression assessments in
-order to identify 1) categories of lesions that are unique in their effects on
-test responses and 2) categories of test responses that are unique in their
-likelihoods of occurring given any lesion. This code depends on the [CFL
-software package](https://github.com/eberharf/cfl) which can be installed via
-[pip](https://cfl.readthedocs.io/en/latest/getting_started/SETUP.html).
+corresponding responses to language, visuospatial, and depression assessments 
+(as described in the associated 
+[preprint](https://www.biorxiv.org/content/10.1101/2023.12.22.573110v1)) 
+in order to identify 1) categories of lesions that are unique in their effects 
+on test responses and 2) categories of test responses that are unique in their 
+likelihoods of occurring given any lesion. This code depends on the 
+[CFL software package](https://github.com/eberharf/cfl) which can be installed 
+via [pip](https://cfl.readthedocs.io/en/latest/getting_started/SETUP.html). 
+
+### Installation
+
+Clone this repository: `git clone https://github.com/iwahle/cfl_lbm.git`. This
+shouldn't take more than a minute on a standard laptop.
+
+### Environment setup
+
+The included code has been tested on macOS 12.6.1. A conda environment with
+all necessary dependencies and dependency versions is specified in 
+`cfl-lbm-env.yml`. To construct an environment with the specified
+dependencies, navigate to the repository and run:
+
+```
+conda env create -f cfl-lbm-env.yml
+conda activate cfl-lbm
+pip install -e .
+```
 
 ### Running the code
 
-1. To use this code with your own data, add a new directory within `data` that 
+1. Once you have set up your conda environment and activated it, run the 
+   example code in `examples/example0.ipynb` with the provided simulated dataset.
+
+2. To use this code with your own data, add a new directory within `data` that 
 contains the following files:
 
     - `X.npy`: an n_samples x n_voxels array of vectorized lesion masks
@@ -26,15 +49,15 @@ contains the following files:
     - `dems.npy` : optional, an n_samples x n_demographics array of demographic
       measures to include when running CFL. 
 
-2. Parameters to run CFL with can be modified in `cfl_params.py`. Consult the
+3. Parameters to run CFL with can be modified in `cfl_params.py`. Consult the
    CFL software package
    [documentation](https://cfl.readthedocs.io/en/latest/index.html#) for details
    on setting parameters. Examples of how to set parameters for hyperparameter
    tuning are included in this file as well.
 
-3. Modify `util.load_scale_data` to properly preprocess your specific dataset.
+4. Modify `util.load_scale_data` to properly preprocess your specific dataset.
 
-4. `run_cfl.py` and most files in `extended_analyses` take the following arguments:
+5. `run_cfl.py` and most files in `extended_analyses` take the following arguments:
 
     - `analysis`: the name of the directory within `data` where your data is 
       stored
