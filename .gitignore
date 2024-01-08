@@ -7,7 +7,6 @@ results/*
 results/*/
 !results/.gitkeep
 !results/simulated/
-source/paths.py
 .gitignore
 clusterer_grid_search.png
 ridge_grid_search.png
