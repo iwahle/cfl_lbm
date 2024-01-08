@@ -28,8 +28,8 @@ def load_scale_data(analysis, include_dem=False):
     print('Y shape: ', Y.shape)
 
     # scale data
-    assert (np.min(X), np.max(X)) == (0,1) # lesion masks
-    if analysis=='cowa_jlo':
+    assert (np.min(X), np.max(X)) == (0,1), f'{np.min(X)}, {np.max(X)}' # lesion masks
+    if (analysis=='cowa_jlo') or (analysis=='simulated'):
         Y = Y - np.mean(Y, axis=0)
         Y = Y / np.std(Y, axis=0)
     elif analysis=='bdi':

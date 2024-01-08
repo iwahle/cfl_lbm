@@ -24,7 +24,12 @@ def main(analysis, include_dem):
     block_names = ['CondDensityEstimator', 'CauseClusterer']
     if analysis=='bdi':
         block_names.append('EffectClusterer')
-    block_params = cowa_jlo_params if analysis=='cowa_jlo' else bdi_params
+    if analysis=='cowa_jlo':
+        block_params = cowa_jlo_params
+    elif analysis=='bdi':
+        block_params = bdi_params
+    elif analysis=='simulated':
+        block_params = sim_params
     save_path = os.path.join(RESULTS_PATH, analysis)
 
     my_exp = Experiment(X_train=X, Y_train=Y, data_info=data_info, 

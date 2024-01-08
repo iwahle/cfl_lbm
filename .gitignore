@@ -1,8 +1,12 @@
 # do not track data
-data/
+data/*
+data/*/
 !data/.gitkeep
-results/
+!data/simulated/
+results/*
+results/*/
 !results/.gitkeep
+!results/simulated/
 source/paths.py
 .gitignore
 clusterer_grid_search.png

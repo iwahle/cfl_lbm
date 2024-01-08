@@ -36,6 +36,18 @@ bdi_effect_cluster_params =  {'model' : 'KMeans',
 bdi_params = [bdi_CDE_params, bdi_cause_cluster_params, 
               bdi_effect_cluster_params]
 
+# simulated data example params
+sim_CDE_params = {  'model' : 'CondExpRidgeCV',
+                'model_params' : {  'cv_split' : None,
+                                    'random_state' : 0,
+                                    'alphas' : 1,
+                                    'score_fxn' : None}}
+sim_cause_cluster_params =  {'model' : 'KMeans',
+                            'model_params' : {  'n_clusters' : 2,
+                                                'random_state' : 0},
+                            'verbose' : 0,
+                            'tune' : False}
+sim_params = [sim_CDE_params, sim_cause_cluster_params]
 ################################################################################
 # params to tune hyperparameters from scratch
 
