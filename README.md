@@ -40,7 +40,7 @@ python -m src.dep_cfl.run_cfl --exp_id 0 --plot_order 1 3 4 0 2
 - `results/<module>/cfl_results/` — trained CFL experiment state, reloadable via `--exp_id`.
 - `figures/<module>/` — output plots for each analysis module.
 
-Please see the manuscript for data sharing detials. 
+Please see the manuscript for data sharing details. 
 
 ## Module naming
 
