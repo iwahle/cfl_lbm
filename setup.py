@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='cfl_lbm_comp',
+    name='cfl_lbm',
     version='0.0.1',
     packages=find_packages(include=['source', 'source.*'])
 )
