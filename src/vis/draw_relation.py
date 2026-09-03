@@ -18,8 +18,10 @@ def _compute_transition_matrix(xlbls, ylbls):
     P_E_given_C = P_CE / P_C[:,np.newaxis]
     return P_E_given_C
 
-def draw_relation(cms, ems, plot_order_c, plot_order_e, save_path, 
-                  sigs_lt=None, sigs_gt=None, sig_thresh=0.05):
+def draw_relation(cms, ems, plot_order_c, plot_order_e, save_path=None,
+                  sigs_lt=None, sigs_gt=None, sig_thresh=0.05, dpi=300,
+                  figsize=None, fontsize=FS-2, bbox_inches='tight', ax=None,
+                  y_offset=0):
     n_cms,n_ems = len(np.unique(cms)),len(np.unique(ems))
     assert n_cms < 10
     assert n_ems < 10
@@ -59,7 +61,10 @@ def draw_relation(cms, ems, plot_order_c, plot_order_e, save_path,
     print('edge_labels:', edge_labels)            
     G.add_edges_from(elist)
 
-    fig, ax = plt.subplots(1, 1, figsize=(CW1*.6, n_cms*0.8))
+    if ax is None:
+        if figsize is None:
+            figsize = (CW1*.6, n_cms*0.8)
+        fig, ax = plt.subplots(1, 1, figsize=figsize)
     ax.axis('off')
     pos = nx.bipartite_layout(G, nodes=range(n_cms))
     edges = nx.draw_networkx(G, pos=pos, with_labels=False,
@@ -68,19 +73,27 @@ def draw_relation(cms, ems, plot_order_c, plot_order_e, save_path,
                             alpha=edge_alphas)
     nx.draw_networkx_edge_labels(
         G, pos,
-        edge_labels=edge_labels, font_size=FS-2,
+        edge_labels=edge_labels, font_size=fontsize,
         font_color='black', label_pos=0.7, rotate=True)
-    
+
+    # shift the axes (and everything attached to it, incl. the colorbar
+    # added below) up/down within the figure (positive y_offset moves it up)
+    if y_offset != 0:
+        bbox = ax.get_position()
+        ax.set_position([bbox.x0, bbox.y0 + y_offset, bbox.width, bbox.height])
+
     # Add colorbar
     sm = plt.cm.ScalarMappable(cmap=cm.get_cmap('Oranges'), 
                                norm=plt.Normalize(vmin=0, vmax=1))
     sm.set_array([])
-    cbar = plt.colorbar(sm, orientation='horizontal', pad=0.03, shrink=0.6)
-    cbar.set_label('Edge weight', fontsize=FS-2)
-    cbar.ax.tick_params(labelsize=FS-2)
-    
-    plt.tight_layout()
-    plt.savefig(save_path, dpi=300, bbox_inches='tight', transparent=True)
+    cbar = plt.colorbar(sm, ax=ax, orientation='horizontal', pad=0.03, shrink=0.6,
+                        use_gridspec=False)
+    cbar.set_label('Edge weight', fontsize=fontsize)
+    cbar.ax.tick_params(labelsize=fontsize)
+
+    if save_path is not None:
+        plt.savefig(save_path, dpi=dpi, bbox_inches=bbox_inches, transparent=True)
+    return ax
 
 def draw_relation_sankey(xlbls, ylbls, save_path):
     plot_sankey([xlbls, ylbls], save_path=save_path)

@@ -10,7 +10,7 @@ def lesion_heatmap(masks, mode='mean', save_path=None, figure=None, ax=None,
                    threshold=None, display_mode='ortho', ylabel=True, contour_map=None,
                    fontsize1=FS, fontsize2=FSNL, cbarticks_right=True, cbar_tick_format=None,
                    cbar_ticks_increment=20, cbar_fancy_scaling=True, cbar_label=None,
-                   cbar_width_factor=1):
+                   cbar_width_factor=1, dpi=300):
     """
     Create a heatmap of the lesion masks.
     Arguments:
@@ -82,11 +82,11 @@ def lesion_heatmap(masks, mode='mean', save_path=None, figure=None, ax=None,
         cbar.ax.set_position([pos.x0, pos.y0, pos.width*cbar_width_factor, pos.height])
     if ylabel:
         xloc = -0.05 if display_mode in ['ortho', 'yz'] else -0.03
-        orthoslicer.title(f'N={masks.shape[0]}', size=fontsize1, rotation='vertical', 
+        orthoslicer.title(f'N={masks.shape[0]}', size=fontsize1, rotation='vertical',
                         x=xloc, y=0.7, color='black', bgcolor='white', alpha=0)
     if save_path:
         plt.tight_layout()
-        plt.savefig(save_path, dpi=300, transparent=True)
+        plt.savefig(save_path, dpi=dpi, transparent=True)
         
     return orthoslicer
 
