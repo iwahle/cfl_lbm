@@ -6,7 +6,7 @@
 </p>
 
 
-Causal Feature Learning (CFL) is an unsupervised algorithm designed to construct macro-variables from low-level data, preserving the causal relationships present in the data. In this repository, CFL is benchmarked against Canonical Correlations Analysis (CCA) using a synthetic dataset, and is applied to human brain lesion data and corresponding responses to language, visuospatial, and depression assessments (as described in the associated preprint). This code depends on the [CFL software package](https://github.com/eberharf/cfl) which can be installed via pip.
+Causal Feature Learning (CFL) is an unsupervised algorithm designed to construct macro-variables from low-level data, preserving the causal relationships present in the data. In this repository, we demonstrate how CFL can be used to learn the appropriate level of granularity at which to map lesions to behavioral outcomes. CFL is benchmarked against Canonical Correlations Analysis (CCA) using a synthetic dataset, and is applied to human brain lesion data and corresponding responses to language, visuospatial, and depression assessments (as described in the associated preprint). This code depends on the [CFL software package](https://github.com/eberharf/cfl) which can be installed via `pip`.
 
 
 Each `src/` subdirectory is a self-contained analysis that produces one or more figures for the paper. `figure_reference.md` maps every figure/panel to the script that generates it.
@@ -42,7 +42,8 @@ with optional command line arguments:
 - `--exp_id -1` (default) trains a fresh CFL `Experiment`. A non-negative `--exp_id` reloads a previously trained experiment's saved results instead of retraining — use this to iterate on plots without rerunning training.
 - `--plot_order` remaps category (`plot_order_c` for cause categories, `plot_order_e` for effect categories) indices for figure display only.
 
-Each analysis expects data to be provided in a standardized format (see next section) prior to running. Please refer to the paper for data sharing details. 
+Each analysis expects data to be provided in a standardized format (see next section) prior to running. Neuroimaging and demographic data are available upon reasonable request by contacting Dan Tranel or Aaron Boes, if such requests can be fulfilled within our institutional policies for protecting participants health information. 
+
 
 
 ## Data layout
@@ -52,8 +53,6 @@ Each analysis expects data to be provided in a standardized format (see next sec
 - `data/<dataset>/` — preprocessed lesion masks (`X.npy`), deficit scores (`Y.npy`), demographics, etiology, and train/test splits. Datasets: `cohort1` (language/visuospatial deficits), `cohort2` (depression questionnaire deficits), `simulated`/`simulated_schaefer200` (synthetic lesions with known ground-truth parcels).
 - `results/<module>/cfl_results/` — trained CFL experiment state, reloadable via `--exp_id`.
 - `figures/<module>/` — output plots for each analysis module.
-
-Please see the manuscript for data sharing details. 
 
 ### Expected cohort data format
 

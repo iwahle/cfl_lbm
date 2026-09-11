@@ -1,6 +1,8 @@
 # Example CFL walkthrough
 
 A minimal, fully-synthetic example of the code pipeline used for the real lesion cohorts.
+Neuroimaging and demographic data are available upon reasonable request by contacting Dan Tranel or Aaron Boes, if such requests can be fulfilled within our institutional policies for protecting participants health information. 
+
 
 ## 1. Data generation
 
