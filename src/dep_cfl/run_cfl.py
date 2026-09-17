@@ -161,7 +161,7 @@ def main(exp_id=-1, plot_order_c=None, plot_order_e=None):
         bins = np.linspace(np.min(Yraw_test_mean), np.max(Yraw_test_mean),5)
         ax[i].hist(Yraw_test_mean[xlbls_test==plot_order_c[i]], color=GREEN, 
                      bins=bins)
-        avg = np.mean(Yraw_test_mean[ylbls_test==plot_order_c[i]])
+        avg = np.mean(Yraw_test_mean[xlbls_test==plot_order_c[i]])
         ax[i].axvline(avg, color='green', linestyle='--', lw=2)
         ax[i].axvline(global_mean, color='black', linestyle='--')
         ax[-1].set_xlabel('Mean BDI')
@@ -286,5 +286,5 @@ if __name__ == '__main__':
     parser.add_argument('--plot_order_e', type=int, nargs='+', default=None)
 
     main(**vars(parser.parse_args()))
-    # plot_order_c: 0 2 1
+    # plot_order_c: 1 2 0
     # plot_order_e: 3 0 1 2

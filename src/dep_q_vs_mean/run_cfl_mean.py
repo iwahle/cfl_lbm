@@ -79,7 +79,7 @@ def main(exp_id=-1, ref_exp_id=0, plot_order_m=None, plot_order_q=None):
     im = ax.imshow(cmat, cmap='viridis', origin='upper', vmin=0, vmax=1)
     ax.set_xticks(range(n_clusters))
     ax.set_yticks(range(n_clusters))
-    ax.set_xticklabels(np.array(['C1', 'C2', 'C3'])[plot_order_q])
+    ax.set_xticklabels(['C1', 'C2', 'C3'])
     ax.set_yticklabels(['C1\'', 'C2\'', 'C3\''])
     ax.set_xlabel('21 questions')
     ax.set_ylabel('Mean BDI')
@@ -115,4 +115,4 @@ if __name__ == '__main__':
 
     main(**vars(parser.parse_args()))
 
-    # python src/dep_q_vs_mean/run_cfl_mean.py --exp_id 0 --ref_exp_id 0 --plot_order_m 1 0 2
+    # python src/dep_q_vs_mean/run_cfl_mean.py --exp_id 0 --ref_exp_id 0 --plot_order_m 0 2 1 --plot_order_q 1 2 0    

@@ -84,8 +84,8 @@ def main(exp_id=-1, plot_order_ca=None, plot_order_q=None, n_q_clusters=None):
     im = ax.imshow(cmat, cmap='viridis', origin='upper', vmin=0, vmax=1)
     ax.set_xticks(range(n_clusters))
     ax.set_yticks(range(n_clusters))
-    ax.set_xticklabels(np.array(['C1', 'C2', 'C3'])[plot_order_q])
-    ax.set_yticklabels(['C1\'', 'C2\'', 'C3\'']) #[plot_order_ca])
+    ax.set_xticklabels(['C1', 'C2', 'C3'])
+    ax.set_yticklabels(['C1\'', 'C2\'', 'C3\''])
     ax.set_xlabel('21 questions')
     ax.set_ylabel(f'cfl agg. (k={n_q_clusters})')
     cbar = plt.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
@@ -113,5 +113,5 @@ if __name__ == '__main__':
 
     main(**vars(parser.parse_args()))
 
-    # python src/dep_q_vs_cflagg/run_cfl_cflagg.py --exp_id 0 --n_q_clusters 3 --plot_order_ca 2 0 1
-    # python src/dep_q_vs_cflagg/run_cfl_cflagg.py --exp_id 1 --n_q_clusters 5 --plot_order_ca 1 2 0
+    # python src/dep_q_vs_cflagg/run_cfl_cflagg.py --exp_id 0 --n_q_clusters 3 --plot_order_ca 0 1 2 --plot_order_q 1 2 0
+    # python src/dep_q_vs_cflagg/run_cfl_cflagg.py --exp_id 1 --n_q_clusters 5 --plot_order_ca 2 0 1 --plot_order_q 1 2 0
